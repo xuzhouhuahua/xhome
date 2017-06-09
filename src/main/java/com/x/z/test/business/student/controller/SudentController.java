@@ -33,11 +33,7 @@ public class SudentController{
 	@Resource
 	private SudentService sudentService;
 	
-<<<<<<< HEAD
 	private void testd(){
-=======
-	private void testc(){
->>>>>>> branch 'dev1.1.2' of https://github.com/xuzhouhuahua/xhome.git
 		System.out.println();
 	}
 	/**
@@ -46,11 +42,7 @@ public class SudentController{
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.GET)
 	public String initAddSudent(){
-<<<<<<< HEAD
 		testd();
-=======
-		testc();
->>>>>>> branch 'dev1.1.2' of https://github.com/xuzhouhuahua/xhome.git
 		//test
 		return null;
 	}
@@ -62,7 +54,6 @@ public class SudentController{
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.POST)
 	public String addSudent(Sudent sudent){
-		testc();
 		sudentService.addSudent(sudent);
 		return null;
 	}
