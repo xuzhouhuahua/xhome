@@ -39,6 +39,7 @@ public class SudentController{
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.GET)
 	public String initAddSudent(){
+		//test
 		return null;
 	}
 	
