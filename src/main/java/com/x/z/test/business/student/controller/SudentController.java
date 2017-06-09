@@ -44,12 +44,9 @@ public class SudentController{
 	public String initAddSudent(){
 		testb();
 		//test
-		testa();
 		return null;
 	}
-	private void testa(){
-		//test
-	}
+	
 	/**
 	 * @description: add
 	 * @param sudent
@@ -57,7 +54,6 @@ public class SudentController{
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.POST)
 	public String addSudent(Sudent sudent){
-		testa();
 		sudentService.addSudent(sudent);
 		return null;
 	}
