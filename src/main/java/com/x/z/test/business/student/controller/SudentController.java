@@ -33,12 +33,16 @@ public class SudentController{
 	@Resource
 	private SudentService sudentService;
 	
+	private void testb(){
+		System.out.println();
+	}
 	/**
 	 * @description: 
 	 * @return
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.GET)
 	public String initAddSudent(){
+		testb();
 		//test
 		return null;
 	}
@@ -62,6 +66,7 @@ public class SudentController{
 	@RequestMapping(value = "getSudentList" , method = RequestMethod.GET)
 	public String getSudentList(Sudent sudent,Model model){
 		model.addAttribute("sudentList",sudentService.getSudentList(sudent));
+		
 		return null;
 	}
 
