@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper  namespace="com.x.z.test.business.student.dao.mapper.SudentMapper">
+	<insert id="addSudent" parameterType="com.x.z.test.business.student.entity.Sudent"
+		>
+		INSERT INTO sudent
+		(id, name)
+		VALUES
+		(#{id}, #{name})
+	</insert>
+
+	<select id="getSudentList" parameterType="com.x.z.test.business.student.entity.Sudent"
+    	resultType="com.x.z.test.business.student.entity.Sudent">
+		SELECT 
+		id, name
+		FROM sudent
+		<where>
+			<if test="null != id " >
+				id = #{id} 
+			</if>
+			<if test="null != name and '' != name" >
+				AND name = #{name} 
+			</if>
+		</where>
+	</select>
+	
+</mapper>

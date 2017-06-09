@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="     
+           http://www.springframework.org/schema/beans     
+           http://www.springframework.org/schema/beans/spring-beans.xsd     
+           http://www.springframework.org/schema/context     
+           http://www.springframework.org/schema/context/spring-context.xsd    
+           http://www.springframework.org/schema/mvc     
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 启动spring的注解功能 -->
+	<mvc:annotation-driven />
+	<!--激活spring的自动扫描功能 -->
+	<context:component-scan base-package="com.x.z" use-default-filters="false">
+		<!-- 扫描controller注解 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<!-- 部署欢迎页为登录页面 -->
+	<mvc:view-controller path="/" view-name="index" />
+	<!-- 允许访问静态资源 -->
+	<mvc:default-servlet-handler />
+	
+	<bean id="exceptionResolver" class="com.travelsky.scaler.web.resolver.MappingExceptionResolver">
+		<property name="defaultErrorView" value="500" />
+	</bean>
+	
+	<!-- Freemarker配置 -->
+	<bean class="com.travelsky.scaler.web.freemarker.configurer.FreeMarkerConfigurer">
+		<!-- 模版文件路径 -->
+		<property name="templateLoaderPath" value="/WEB-INF/templates"/>
+		<!-- 配置freemarker参数 -->
+		<property name="configLocation" value="classpath:freemarker.properties"/>
+	</bean>
+	
+	<!-- freemarker视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<!-- 指定视图类 -->
+		<property name="viewClass" value="com.travelsky.scaler.web.freemarker.view.FreeMarkerView" />
+		<!-- 是否允许缓存 -->
+		<property name="cache" value="false" />
+		<!-- 模版文件的后缀名 -->
+		<property name="suffix" value=".html" />
+		<!-- 设置视图的contentType，避免出现乱码问题 -->
+		<property name="contentType" value="text/html;charset=utf-8" />
+		<!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->
+		<property name="requestContextAttribute" value="rc" />
+		<!-- 配置视图解析器的优先级，order值越小，优先级越高(优先使用freemarker视图解析器，因为FreeMarkerView会判断模版文件是否存在，其它视图默认一定存在) -->
+		<property name="order" value="0" />
+	</bean>
+	
+	<bean id="multipartResolver"
+		class="com.travelsky.scaler.security.xss.resovler.XssCommonsMutipartResolver">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="maxInMemorySize" value="4096" />
+		<property name="maxUploadSize" value="104857600" />
+	</bean>
+
+</beans>

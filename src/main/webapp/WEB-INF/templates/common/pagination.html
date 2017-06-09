@@ -1,0 +1,42 @@
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+	[#list 1..pageCond.totalPage as page]
+    	<li><a href="javascript:void();" class="ev-page-num">${page}</a></li>
+    [/#list]
+    <li>
+      <a href="javascript:void();" class="ev-next" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<input type="hidden" class="currentPage" name="currentPage" value="${pageCond.currentPage}"/>
+<script type="text/javascript">
+	$(function(){
+		
+		$('.pagination li .ev-preview').click(function(){
+			var currentPage = $('.currentPage');
+			currentPage.val(parseInt(currentPage.val()) - 1);
+			$('form').submit();
+		});
+		
+		
+		$('.pagination li .ev-page-num').click(function(){
+			var currentPage = $('.currentPage');
+			currentPage.val($(this).text());
+			$('form').submit();
+		});
+		
+		
+		$('.pagination li .ev-next').click(function(){
+			var currentPage = $('.currentPage');
+			currentPage.val(parseInt(currentPage.val()) + 1);
+			$('form').submit();
+		});
+	});
+</script>
