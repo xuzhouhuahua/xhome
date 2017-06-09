@@ -33,7 +33,7 @@ public class SudentController{
 	@Resource
 	private SudentService sudentService;
 	
-	private void testd(){
+	private void testa(){
 		System.out.println();
 	}
 	/**
@@ -42,7 +42,7 @@ public class SudentController{
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.GET)
 	public String initAddSudent(){
-		testd();
+		testa();
 		//test
 		return null;
 	}
