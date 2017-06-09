@@ -54,6 +54,7 @@ public class SudentController{
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.POST)
 	public String addSudent(Sudent sudent){
+		testa();
 		sudentService.addSudent(sudent);
 		return null;
 	}
