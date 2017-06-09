@@ -39,6 +39,7 @@ public class SudentController{
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.GET)
 	public String initAddSudent(){
+		sudentService.getSudentList(null);
 		return null;
 	}
 	
@@ -49,7 +50,8 @@ public class SudentController{
 	 */
 	@RequestMapping(value = "addSudent" , method = RequestMethod.POST)
 	public String addSudent(Sudent sudent){
-		sudentService.addSudent(sudent);
+		//假的
+		sudentService.updateSudent(sudent);
 		return null;
 	}
 	
