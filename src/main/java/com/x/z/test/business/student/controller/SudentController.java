@@ -32,7 +32,6 @@ public class SudentController{
 
 	@Resource
 	private SudentService sudentService;
-	
 	/**
 	 * @description: 
 	 * @return
